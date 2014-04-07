@@ -7,6 +7,9 @@ public class LineInput {
 	
 	private Scanner scan;
 	
+	public LineInput(){
+		this(System.in);
+	}
 	public LineInput(InputStream stream){
 		this.scan = new Scanner(stream);
 	}
