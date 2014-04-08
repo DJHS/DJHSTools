@@ -1,4 +1,4 @@
-package djhstools.api.utilities;
+package djhstools.api.util;
 
 import java.io.PrintStream;
 import java.util.Collection;
