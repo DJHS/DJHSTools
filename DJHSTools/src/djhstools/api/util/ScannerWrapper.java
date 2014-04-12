@@ -3,10 +3,16 @@ package djhstools.api.util;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-public class ScannerWrapper {
+/**
+ * A wrapper around a Scanner to provide extra functionality
+ * Implements an iterator for LineScanners (see specification in method), for 
+ * use with for-each loops.
+ */
+public class ScannerWrapper implements Iterator<Scanner>{
 
     Scanner scan;
     public ScannerWrapper(Scanner scanner) {
@@ -64,7 +70,25 @@ public class ScannerWrapper {
      * Accomplishes exact same thing as scanner().hasNextLine();
      */
     public boolean hasNextLine(){
+        return this.hasNextLineScanner();
+    }
+    public boolean hasNextLineScanner(){
         return scan.hasNextLine();
+    }
+
+    @Override
+    public boolean hasNext() {
+        return this.hasNextLineScanner();
+    }
+
+    @Override
+    public Scanner next() {
+       return this.nextLineScanner();
+    }
+
+    @Override
+    public void remove() {
+        throw new UnsupportedOperationException("Remove is not supported.");
     }
     
 }
