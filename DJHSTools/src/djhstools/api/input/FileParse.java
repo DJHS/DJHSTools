@@ -1,15 +1,18 @@
 package djhstools.api.input;
 
+import djhstools.api.util.ScannerWrapper;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Collection;
+import java.util.List;
 import java.util.Scanner;
 
-public class FileArgParse {
+public class FileParse {
     File file;
     
-    public FileArgParse(String filePath)throws FileNotFoundException{
+    public FileParse(String filePath)throws FileNotFoundException{
         file = new File(filePath);
         if(!file.exists()){
             throw new FileNotFoundException(filePath + " does not exist.");
@@ -23,6 +26,10 @@ public class FileArgParse {
         return new Scanner(this.newInputStream());
     }
     
+    public ScannerWrapper newScannerWrapper(){
+        return new ScannerWrapper(newScanner());
+    }
+    
     public LineInput newLineInput(){
         return new LineInput(this.newInputStream());
     }
@@ -34,5 +41,17 @@ public class FileArgParse {
             //Will never happen, would be thrown in constructor
             return null;
         }
+    }
+    
+    public String[] getLinesArray(){	
+        return newScannerWrapper().nextLinesArray(Integer.MAX_VALUE);
+    }
+    
+    public Collection<String> getLinesCollection(){
+        return newScannerWrapper().nextLinesCollection(Integer.MAX_VALUE);
+    }
+    
+    public List<String> getLinesList(){
+        return newScannerWrapper().nextLinesList(Integer.MAX_VALUE);
     }
 }
