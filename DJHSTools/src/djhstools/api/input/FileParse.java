@@ -1,13 +1,9 @@
 package djhstools.api.input;
 
-import djhstools.api.util.ScannerWrapper;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.Collection;
-import java.util.List;
-import java.util.Scanner;
 
 public class FileParse extends AbstractParse{
     File file;

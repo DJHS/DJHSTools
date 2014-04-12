@@ -7,8 +7,6 @@
 package djhstools.api.input;
 
 import djhstools.api.util.ScannerWrapper;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Collection;
 import java.util.List;
