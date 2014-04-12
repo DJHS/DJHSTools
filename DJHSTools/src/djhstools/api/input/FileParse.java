@@ -9,10 +9,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
-public class FileParse {
+public class FileParse extends AbstractParse{
     File file;
     
-    public FileParse(String filePath)throws FileNotFoundException{
+    public FileParse(String filePath) throws FileNotFoundException{
         file = new File(filePath);
         if(!file.exists()){
             throw new FileNotFoundException(filePath + " does not exist.");
@@ -21,19 +21,8 @@ public class FileParse {
             throw new IllegalArgumentException(filePath + " is not a file (maybe a directory?)");
         }
     }
-    
-    public Scanner newScanner(){
-        return new Scanner(this.newInputStream());
-    }
-    
-    public ScannerWrapper newScannerWrapper(){
-        return new ScannerWrapper(newScanner());
-    }
-    
-    public LineInput newLineInput(){
-        return new LineInput(this.newInputStream());
-    }
-    
+  
+    @Override
     public InputStream newInputStream(){
         try{
             return new FileInputStream(file);
@@ -42,16 +31,5 @@ public class FileParse {
             return null;
         }
     }
-    
-    public String[] getLinesArray(){	
-        return newScannerWrapper().nextLinesArray(Integer.MAX_VALUE);
-    }
-    
-    public Collection<String> getLinesCollection(){
-        return newScannerWrapper().nextLinesCollection(Integer.MAX_VALUE);
-    }
-    
-    public List<String> getLinesList(){
-        return newScannerWrapper().nextLinesList(Integer.MAX_VALUE);
-    }
 }
+
