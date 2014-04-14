@@ -3,6 +3,9 @@ package djhstools.api.util;
 import java.io.PrintStream;
 import java.util.Collection;
 
+@Deprecated /*Abbreviations in libraries not a good idea, use IDE code templates
+to shorten typing time instead. Functionality implemented in PrintStreamWrapper.           
+*/
 public class SystemOut {
         static final String NEWLINE_DELIMETER = "\n";
         PrintStream out;
