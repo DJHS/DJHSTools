@@ -1,12 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package djhstools.api.util;
 
-import static djhstools.api.util.SystemOut.NEWLINE_DELIMETER;
 import java.io.PrintStream;
 import java.util.Collection;
 import java.util.HashMap;
@@ -22,8 +15,6 @@ public class PrintStreamWrapper {
         ps = stream;
     }
     
-    static Map<PrintStream, PrintStreamWrapper> instanceMap = 
-            new HashMap<PrintStream, PrintStreamWrapper>();
     /*
     static PrintStreamWrapper defaultInstance;
     public static PrintStreamWrapper getInstance(){
@@ -35,6 +26,9 @@ public class PrintStreamWrapper {
     */ 
     //Implement as a final public field instead
     public final static PrintStreamWrapper out = new PrintStreamWrapper(System.out);
+    
+    static Map<PrintStream, PrintStreamWrapper> instanceMap = 
+            new HashMap<PrintStream, PrintStreamWrapper>();
     public static PrintStreamWrapper getInstance(PrintStream stream){
         if(instanceMap.containsKey(stream)){
             return instanceMap.get(stream);
@@ -48,6 +42,7 @@ public class PrintStreamWrapper {
     public PrintStream ps(){
         return ps;
     }
+    
     /* Convenince Methods (for those not inculded, make call to ps() first)*/
     public void println(){
         ps.println();
@@ -62,6 +57,7 @@ public class PrintStreamWrapper {
         ps.print(obj);
     }
     
+    static final String NEWLINE_DELIMETER = "\n";
     private final void printDelimeter(String delimeter){
         if(delimeter.equals(NEWLINE_DELIMETER)){
                 println();
