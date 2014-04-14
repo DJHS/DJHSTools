@@ -111,9 +111,12 @@ public class PrintStreamWrapper {
         print2dArrayLines(o2a, "");
     }
     public final void print2dArrayLines(Object[][] o2a, String horDelimeter){
+        print2dArray(o2a, horDelimeter, NEWLINE_DELIMETER);
+    }
+    public final void print2dArray(Object[][] o2a, String horDelimeter, String verDelimeter){
         for(Object[] oa : o2a){
             printArray(oa, horDelimeter);
-            println();
+            printDelimeter(verDelimeter);
         }
     }
 
@@ -121,9 +124,12 @@ public class PrintStreamWrapper {
         print2dArrayLines(i2a, "");
     }
     public final void print2dArrayLines(int[][] i2a, String horDelimeter){
+        print2dArray(i2a, horDelimeter, NEWLINE_DELIMETER);
+    }
+    public final void print2dArray(int[][] i2a, String horDelimeter, String verDelimeter){
         for(int[] ia : i2a){
             printArray(ia, horDelimeter);
-            println();
+            printDelimeter(verDelimeter);
         }
     }
     
